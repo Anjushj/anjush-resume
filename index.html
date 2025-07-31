@@ -6,6 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anjush Joseph | Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+  .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above image */
+  left: 50%;
+  margin-left: -70px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
   <style>
     .floating-linkedin {
   position: fixed;
@@ -84,9 +114,13 @@
   <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
 
   <header>
-    <a href="https://www.linkedin.com/in/anjushjoseph" target="_blank">
-  <img src="profile.jpg" alt="Profile Photo" style="border: 4px solid #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);" />
-</a>
+  <div class="tooltip">
+  <a href="https://www.linkedin.com/in/anjushjoseph/" target="_blank">
+    <img src="profile.jpg" alt="Profile Photo" style="border: 4px solid #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); border-radius: 50%;" />
+  </a>
+  <span class="tooltiptext">Visit my LinkedIn!</span>
+</div>
+
     <h1>Anjush Joseph</h1>
     <p>B.Tech Polymer Engineering | Data Analysis Enthusiast</p>
     <p>Email: <a href="mailto:anjushjoseph03@gmail.com" style="color:white;">anjushjoseph03@gmail.com</a></p>
@@ -106,7 +140,7 @@
 
     <section>
       <h2>Projects</h2>
-      <p><strong>Humidity Sensing | Jain University</strong><br/>Exploring the synergy of magnetism and electrocatalysis</p>
+      <p><strong>Main Project | Jain University</strong><br/>Exploring the synergy of magnetism and electrocatalysis & Humidity Sensing</p>
       <p><strong>Mini Project</strong><br/>Hawai Chappal Fabrication</p>
     </section>
 
