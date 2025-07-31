@@ -7,6 +7,26 @@
   <title>Anjush Joseph | Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
+    .floating-linkedin {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0077b5;
+  color: white;
+  border-radius: 50%;
+  padding: 12px;
+  text-align: center;
+  font-size: 20px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  text-decoration: none;
+}
+.floating-linkedin:hover {
+  transform: scale(1.1);
+  background-color: #005582;
+}
+
     :root {
       --bg-light: #ffffff;
       --text-light: #1a1a1a;
@@ -124,5 +144,23 @@
       document.body.classList.toggle('dark-mode');
     }
   </script>
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/anjushjoseph" target="_blank" title="Connect on LinkedIn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 16 16">
+    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 
+    1.146v13.708c0 .633-.526 1.146-1.175 
+    1.146H1.175C.526 16 0 15.487 0 
+    14.854V1.146zM4.943 13.569V6.169H2.542v7.4h2.401zm-1.2-8.49c.837 
+    0 1.357-.554 1.357-1.248-.015-.708-.52-1.248-1.342-1.248-.823 
+    0-1.357.54-1.357 1.248 0 
+    .694.52 1.248 1.327 
+    1.248h.015zm4.908 
+    8.49V9.359c0-.224.016-.448.083-.608.182-.448.597-.915 
+    1.295-.915.915 0 1.281.69 1.281 
+    1.702v4.031h2.401V9.3c0-2.26-1.207-3.309-2.816-3.309-1.296 
+    0-1.872.72-2.197 1.224v.03h-.015a5.89 
+    5.89 0 0 1 .015-.03V6.169h-2.4v7.4h2.4z"/>\n
+  </svg>
+</a>
+
 </body>
 </html>
