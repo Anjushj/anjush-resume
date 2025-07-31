@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anjush Joseph | Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --text-light: #1a1a1a;
+      --bg-dark: #121212;
+      --text-dark: #e0e0e0;
+      --accent: #0077cc;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s;
+    }
+
+    .dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: var(--accent);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.3rem;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <header>
+    <h1>Anjush Joseph</h1>
+    <p>B.Tech Polymer Engineering | Data Analysis Enthusiast</p>
+    <p>Email: <a href="mailto:anjushjoseph03@gmail.com" style="color:white;">anjushjoseph03@gmail.com</a></p>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>About Me</h2>
+      <p>Recent B.Tech graduate in Polymer Engineering with a strong interest in data analysis and problem-solving. Familiar with Excel, material testing, and basic processing techniques. Motivated, quick learner, and ready to contribute in manufacturing, quality control, or R&D roles.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <p><strong>University College of Engineering, Thodupuzha</strong><br/>B.Tech in Polymer Engineering (2021–2025)</p>
+      <p><strong>Chinmaya Vidyalaya, Thondayad</strong><br/>Higher Secondary – 89.92%</p>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <p><strong>Humidity Sensing | Jain University</strong><br/>Exploring the synergy of magnetism and electrocatalysis</p>
+      <p><strong>Mini Project</strong><br/>Hawai Chappal Fabrication</p>
+    </section>
+
+    <section>
+      <h2>Trainings</h2>
+      <ul>
+        <li>Rubber Training – NIRT, Kottayam</li>
+        <li>Plastic Processing – CIPET, Palakkad</li>
+        <li>Plastic Processing – Agney Polysoft</li>
+        <li>Pipe Manufacturing – TOMS Pipes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>Rubber Compounding & Mixing, Tyre Technology, Paints & Adhesives</li>
+        <li>Material Science, Polymer Analysis, Data Analysis, MS Excel, PowerPoint</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Machines Handled</h2>
+      <ul>
+        <li>Compression Moulding, MFI, Injection Moulding</li>
+        <li>UTM, Viscometer, Extruder</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Resume</h2>
+      <a href="Anjush-JOSEPH-CV.pdf" download>Download My Resume (PDF)</a>
+    </section>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
