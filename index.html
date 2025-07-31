@@ -1,41 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anjush Joseph | Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-
-
   <style>
-    .floating-linkedin {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #0077b5;
-  color: white;
-  border-radius: 50%;
-  padding: 12px;
-  text-align: center;
-  font-size: 20px;
-  z-index: 1000;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-  text-decoration: none;
-}
-.floating-linkedin:hover {
-  transform: scale(1.1);
-  background-color: #005582;
-}
-
     :root {
       --bg-light: #ffffff;
       --text-light: #1a1a1a;
       --bg-dark: #121212;
       --text-dark: #e0e0e0;
       --accent: #0077cc;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -45,6 +25,8 @@
       background-color: var(--bg-light);
       color: var(--text-light);
       transition: all 0.3s;
+      display: flex;
+      flex-direction: row;
     }
 
     .dark-mode {
@@ -52,22 +34,67 @@
       color: var(--text-dark);
     }
 
-    header {
-      background: var(--accent);
+    nav.sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: var(--accent);
       color: white;
-      padding: 2rem;
+      padding: 2rem 1rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    h2 {
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.3rem;
+    .nav-links li {
+      margin-bottom: 1.2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 0.8;
+      font-weight: bold;
+      border-left: 4px solid white;
+      padding-left: 8px;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .content-section {
+      display: none;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .content-section.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .toggle-btn {
@@ -81,159 +108,163 @@
       cursor: pointer;
       border-radius: 5px;
     }
-      .profile-frame {
-  background: linear-gradient(135deg, #f0f0f0, #ffffff);
-  padding: 12px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
 
-.profile-frame:hover {
-  transform: scale(1.03);
-}
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-.profile-frame img {
-  width: 140px;
-  height: auto;
-  border-radius: 12px;
-  border: 2px solid var(--accent);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-    .section-block {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+    .profile-frame {
+      display: inline-block;
+    }
 
-.section-block.visible {
-  opacity: 1;
-  transform: none;
-}
+    .profile-frame img {
+      width: 140px;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+      background: #f9f9f9;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-mode .card {
+      background: #1e1e1e;
+    }
+
+    @media (max-width: 768px) {
+      nav.sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+      }
+      main {
+        margin-left: 0;
+      }
+      .nav-links li {
+        margin: 0 1rem;
+      }
+    }
   </style>
 </head>
 <body>
   <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+  <nav class="sidebar">
+    <h1 class="logo">Anjush</h1>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showSection('about', this)">About</a></li>
+      <li><a href="#" onclick="showSection('education', this)">Education</a></li>
+      <li><a href="#" onclick="showSection('projects', this)">Projects</a></li>
+      <li><a href="#" onclick="showSection('skills', this)">Skills</a></li>
+      <li><a href="#" onclick="showSection('machines', this)">Machines Handled</a></li>
+      <li><a href="#" onclick="showSection('resume', this)">Resume</a></li>
+    </ul>
+  </nav>
+  <main>
+    <header class="content-section active" id="about">
+      <div class="profile-frame">
+        <a href="https://www.linkedin.com/in/anjushjoseph" target="_blank">
+          <img src="profile.jpg" alt="Profile Photo" />
+        </a>
+      </div>
+      <div>
+        <h1>Anjush Joseph</h1>
+        <p>B.Tech Polymer Engineering | Data Analysis Enthusiast</p>
+        <p>Email: <a href="mailto:anjushjoseph03@gmail.com">anjushjoseph03@gmail.com</a></p>
+      </div>
+    </header>
 
-  <header>
-<div class="profile-frame">
-  <a href="https://www.linkedin.com/in/anjushjoseph/" target="_blank">
-    <img src="profile.jpg" alt="Profile Photo" />
-  </a>
-</div>
-
-    <h1>Anjush Joseph</h1>
-    <p>B.Tech Polymer Engineering | Data Analysis Enthusiast</p>
-    <p>Email: <a href="mailto:anjushjoseph03@gmail.com" style="color:white;">anjushjoseph03@gmail.com</a></p>
-  </header>
-
-<section id="about" class="section-block">
-  <div class="section-content">
-    <h2>About Me</h2>
-      <p>Recent B.Tech graduate in Polymer Engineering with a strong interest in data analysis and problem-solving. Familiar with Excel, material testing, and basic processing techniques. Motivated, quick learner, and ready to contribute in manufacturing, quality control, or R&D roles.</p>
-  </div>
-</section>
-
-    <section>
+    <section id="education" class="content-section">
       <h2>Education</h2>
-      <p><strong>University College of Engineering, Thodupuzha</strong><br/>B.Tech in Polymer Engineering (2021–2025)</p>
-      <p><strong>Chinmaya Vidyalaya, Thondayad</strong><br/>Higher Secondary – 89.92%</p>
+      <div class="card">
+        <p><strong>University College of Engineering, Thodupuzha</strong><br/>B.Tech in Polymer Engineering (2021–2025)</p>
+      </div>
+      <div class="card">
+        <p><strong>Chinmaya Vidyalaya, Thondayad</strong><br/>Higher Secondary – 89.92%</p>
+      </div>
     </section>
 
-    <section>
+    <section id="projects" class="content-section">
       <h2>Projects</h2>
-      <p><strong>Main Project|Jain University</strong><br/>Exploring the synergy of magnetism and electrocatalysis & Humidity Sensing</p>
-      <p><strong>Mini Project</strong><br/>Hawai Chappal Fabrication</p>
+      <div class="card">
+        <p><strong>Main Project| Jain University</strong><br/>Exploring the synergy of magnetism and electrocatalysis & Humidity Sensing</p>
+      </div>
+      <div class="card">
+        <p><strong>Mini Project</strong><br/>Hawai Chappal Fabrication</p>
+      </div>
     </section>
 
-    <section>
-      <h2>Trainings</h2>
-      <ul>
-        <li>Rubber Training – NIRT, Kottayam</li>
-        <li>Plastic Processing – CIPET, Palakkad</li>
-        <li>Plastic Processing – Agney Polysoft</li>
-        <li>Pipe Manufacturing – TOMS Pipes</li>
-      </ul>
-    </section>
-
-    <section>
+    <section id="skills" class="content-section">
       <h2>Skills</h2>
-      <ul>
-        <li>Rubber Compounding Mixing</li> 
-        <li>Tyre Technology</li>
-        <li>Paints & Adhesives</li>
-        <li>Material Science</li>
-        <li>Polymer Analysis</li>
-        <li>Data Analysis</li>
-        <li>MS Excel</li>
-        <li>PowerPoint</li>
-      </ul>
+      <div class="card">
+        <ul>
+          <li>Rubber Compounding & Mixing</li>
+          <li>Tyre Technology</li>
+          <li>Paints & Adhesives</li>
+          <li>Material Science</li>
+          <li>Polymer Analysis</li>
+          <li>Data Analysis</li> 
+          <li>MS Excel</li>
+          <li>PowerPoint</li>
+        </ul>
+      </div>
     </section>
 
-    <section>
+    <section id="machines" class="content-section">
       <h2>Machines Handled</h2>
-      <ul>
-        <li>Compression Moulding</li>
-        <li>Melt Flow Index</li>
-        <li>Injection Moulding</li>
-        <li>Universal Testing Machine</li> 
-        <li>Viscometer</li> 
-        <li>Extruder</li>
-      </ul>
+      <div class="card">
+        <ul>
+          <li>Compression Moulding</li>
+          <li>MFI</li>
+          <li>Injection Moulding</li>
+          <li>Universal Testing Machine</li> 
+          <li>Viscometer</li>
+          <li>Extruder</li>
+        </ul>
+      </div>
     </section>
 
-     <section>
-      <h2>Extrinsic Skills</h2>
-      <ul>
-        <li>Data handling(AIIP)</li>
-        <li>Promblem Solving(AIIP)</li>
-        <li>Designing(Canva)</li>
-      </ul>
-    </section>
-
-    <section>
+    <section id="resume" class="content-section">
       <h2>Resume</h2>
       <a href="Anjush-JOSEPH-CV.pdf" download>Download My Resume (PDF)</a>
     </section>
-  </div>
-
+  </main>
   <script>
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
     }
-  </script>
-  <a class="floating-linkedin" href="https://www.linkedin.com/in/anjushjoseph/" target="_blank" title="Connect on LinkedIn">
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 16 16">
-    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 
-    1.146v13.708c0 .633-.526 1.146-1.175 
-    1.146H1.175C.526 16 0 15.487 0 
-    14.854V1.146zM4.943 13.569V6.169H2.542v7.4h2.401zm-1.2-8.49c.837 
-    0 1.357-.554 1.357-1.248-.015-.708-.52-1.248-1.342-1.248-.823 
-    0-1.357.54-1.357 1.248 0 
-    .694.52 1.248 1.327 
-    1.248h.015zm4.908 
-    8.49V9.359c0-.224.016-.448.083-.608.182-.448.597-.915 
-    1.295-.915.915 0 1.281.69 1.281 
-    1.702v4.031h2.401V9.3c0-2.26-1.207-3.309-2.816-3.309-1.296 
-    0-1.872.72-2.197 1.224v.03h-.015a5.89 
-    5.89 0 0 1 .015-.03V6.169h-2.4v7.4h2.4z"/>\n
-  </svg>
-</a>
-   
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+
+    function showSection(id, el) {
+      const sections = document.querySelectorAll('.content-section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      sections.forEach(sec => sec.classList.remove('active'));
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
       }
+      if (el) {
+        el.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      showSection('about', document.querySelector('.nav-links a'));
     });
-  });
-
-  document.querySelectorAll('.section-block').forEach(block => {
-    observer.observe(block);
-  });
-</script>
-
+  </script>
 </body>
 </html>
